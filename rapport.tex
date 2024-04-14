@@ -44,7 +44,7 @@
 
 \section{Modélisation informatique}
 \ \ \ \ \ On va étudier le problème de percolation en dimension $2$ grâce à la modélisation suivante : on se donne une grille de longueur $l$, de hauteur $h$, et chaque case de la grille a une probabilité $p$ d'être ouverte, indépendamment des autres cases. On se demande alors si il y a percolation, c'est à dire si il est possible de relier le haut et le bas de la grille, en passant uniquement par des cases ouvertes. Dans un premier temps, on mettra en évidence l'existence d'une probabilité critique, puis on observera ensuite différentes propriétés du modèle. \\
-Pour faire une simulation, on tire une grille au hasard suivant les paramètres $l,h$ et $p$, puis on fait un parcours en profondeur de la grille pour déterminer les chemins explorés depuis la hauteur initiale, à la manière d'un fluide qui se propage. Le code utilisé est disponible \href{https://github.com/Hazdard}{ici}.
+Pour faire une simulation, on tire une grille au hasard suivant les paramètres $l,h$ et $p$, puis on fait un parcours en profondeur de la grille pour déterminer les chemins explorés depuis la hauteur initiale, à la manière d'un fluide qui se propage. Le code utilisé est disponible \href{https://github.com/Hazdard/Percolation}{ici}.
 
 \subsection{Probabilité critique et diagramme de phase}
 
@@ -52,12 +52,12 @@ Tout d'abord, les simulations numériques permettent de mettre en évidence un p
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=1 \textwidth]{./Pictures/evolution2.png}
+    \includegraphics[width=1 \textwidth]{./Pictures/evolution.png}
     \caption{Évolution de la percolation sur une grille $500\times 500$ en fonction de la probabilité d'ouverture}
     \label{fig:evol}
 \end{figure}
 
-Ces simulations mettent en évidence que la probabilité critique pour notre modélisation est autour de $0.6$\ . Attention cependant, dans la partie théorique qui suit, on montrera que la probabilité critique vaut $0.5$, mais le modèle qui y sera étudié est légeremment différent car ce sont les arêtes qui y sont ouvertes ou fermées, et non pas les cases. Ici, dans ce modèle dit de ``percolation par sites'', la valeur critique exacte n'est pas explicitement connue. \\
+Ces simulations mettent en évidence que la probabilité critique pour notre modélisation est autour de $0.6$\ . Attention cependant, dans la partie théorique qui suit, on montrera que la probabilité critique vaut $0.5$, mais le modèle qui y sera étudié est légeremment différent car ce sont les arêtes qui y seront ouvertes ou fermées, et non pas les cases. Ici, dans ce modèle dit de ``percolation par sites'', la valeur critique exacte n'est pas explicitement connue. \\
 
 On peut ensuite calculer expérimentalement le diagramme de phase de notre modèle, c'est à dire la probabilité de percolation en fonction de la probabilité d'ouverture.
 \begin{figure}[htbp]
@@ -77,7 +77,7 @@ On peut le comparer au diagramme de phase théorique de la percolation ``classiq
 \end{figure}
 
 \subsection{Plus grande composante connexe}
-\ \ \ \ \ Dans la partie théorique suivante, nous aurons besoin d'un résultat d'unicité de la plus grande composante connexe lorsqu'il y a percolation, c'est à dire unicité de la composante connexe infinie car en théorie la grille est infinie. Au vu de la difficulté de la preuve rigoureuse de ce lemme, on se propose plutôt de le mettre en évidence expérimentalement : les graphes suivants ont leurs composantes connexes coloriés, on observe bien que les composantes qu'il y a unicité de la composante qui atteint le bas de la grille. 
+\ \ \ \ \ Dans la partie théorique suivante, nous aurons besoin d'un résultat d'unicité de la plus grande composante connexe lorsqu'il y a percolation, c'est à dire unicité de la composante connexe infinie car en théorie la grille est infinie. Au vu de la difficulté de la preuve rigoureuse de ce lemme, on se propose plutôt de le mettre en évidence expérimentalement : les graphes suivants ont leurs composantes connexes coloriés, on observe bien qu'il y a unicité de la composante qui atteint le bas de la grille. 
 
 \begin{figure}[htp]
 
@@ -85,6 +85,18 @@ On peut le comparer au diagramme de phase théorique de la percolation ``classiq
 \includegraphics[width=.3333\textwidth]{./Pictures/cc100.png}\hfill
 \includegraphics[width=.3333\textwidth]{./Pictures/cc500.png}\hfill
 \includegraphics[width=.3333\textwidth]{./Pictures/cc1000.png}
+
+\caption{Composantes connexes coloriées sur des grilles carrées de taille $100$, $500$ et $1000$ à $p=0.6$}
+\label{fig:figure3}
+
+\end{figure}
+
+
+\begin{figure}[htp]
+
+\centering
+\includegraphics[width=.5\textwidth]{./Pictures/profondeur.png}\hfill
+\includegraphics[width=.5\textwidth]{./Pictures/taille.png}
 
 \caption{Composantes connexes coloriées sur des grilles carrées de taille $100$, $500$ et $1000$ à $p=0.6$}
 \label{fig:figure3}
