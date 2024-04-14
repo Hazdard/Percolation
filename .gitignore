@@ -6,4 +6,4 @@
 *.out
 *.xml
 *.gz
-
+.ipynb_checkpoints
