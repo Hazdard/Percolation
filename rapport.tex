@@ -111,7 +111,7 @@ On complète ces observations par le graphe de la profondeur maximale atteinte, 
 
 \subsection{Percolation dépendante}
 
-Pour conclure cette partie, on se propose d'étudier empiriquement un second modèle de percolation, où les cases de la grille ne sont plus indépendantes entre elles. La grille sera cette fois générée de la manière suivante : on tire la première ligne ou chaque case a une probabilité $p$ d'être ouverte, indépendamment des autres cases. Puis, pour les autres cases, il y a une probabilité $p'$ de conserver l'état de la cellule du dessus, et $1-p'$ d'être dans l'état opposé. Le but de cette modélisation est d'introduire de la dépendance entre les variables, et d'observer ainsi l'évolution des propriétés intrinsèques par rapport à la modélisation précédente. On observe ici un phénomène de ``fissures'' comme le montre la simulation suivante :
+Pour conclure cette partie, on se propose d'étudier empiriquement un second modèle de percolation, où les cases de la grille ne sont plus indépendantes entre elles. La grille sera cette fois générée de la manière suivante : on tire la première ligne ou chaque case a une probabilité $p$ d'être ouverte, indépendamment des autres cases. Puis, pour les autres cases, il y a une probabilité $p'$ de conserver l'état de la cellule du dessus, et $1-p'$ d'être dans l'état opposé. Le but de cette modélisation est d'introduire de la dépendance entre les variables, et d'observer ainsi l'évolution des propriétés intrinsèques de la percolation par rapport à la modélisation précédente. On observe ici un phénomène de ``fissures'' comme le montre la simulation suivante :
 
 \begin{figure}[htp]
     \centering
@@ -120,8 +120,31 @@ Pour conclure cette partie, on se propose d'étudier empiriquement un second mod
     \label{fig:fissure}
 \end{figure}
 
-\newpage
+%  On remarque que la transition se fait encore plus rapidement que dans le cas classique. Ensuite on estime le diagramme de phase, en choisissant $p=p'$ dans les simulations afin de simplifier les résultats :
+%
+%\begin{figure}[htbp]
+%    \centering
+%    \includegraphics[width=0.6 \textwidth]{./Pictures/phase_dep.png}
+%    \caption{Diagramme de phase expérimental dans le cas de la percolation dépendante, régime $p=p'$}
+%    \label{fig:phase_dep}
+%\end{figure}
+%
+%~\\
+%~\\
+%~\\
+%~\\
+%~\\
 
+Contrairement au cas précédent, cette fois on constate qu'il n'y a plus du tout unicité de la composante connexe maximale.. De plus, on observe dans le graphique suivant que la taille moyenne et la taille maximale des composantes connexes sont globalement différentes pour des valeurs suffisamment grandes de $p$, ce qui est cohérent avec la Figure $6$, où l'on remarque que malgré l'existence de composantes connexes maximales, il reste quand même un grand nombre de petites composantes, ces dernière ne se superposant pas à cause de la modélisation choisie qui tend à préserver les cassures ou frontières entre composantes :
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.67 \textwidth]{./Pictures/taille_dep.png}
+    \caption{Taille moyenne et maximale des composantes connexes d'une grille $100\times 100$ générée en percolation dépendante, avec $p=p'$}
+    \label{fig:phase_dep}
+\end{figure}
+
+\newpage
 \printbibliography[heading=bibintoc, title={Références}]
 
 \end{document}
