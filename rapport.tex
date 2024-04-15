@@ -8,6 +8,7 @@
 \usepackage{dsfont}
 \usepackage{graphicx}
 \usepackage{caption}
+\usepackage{subcaption}
 \usepackage{fancyhdr}
 \usepackage{amsmath,amsfonts,amssymb}
 \usepackage[french]{babel}
@@ -43,8 +44,8 @@
 \begin{document}
 
 \section{Modélisation informatique}
-\ \ \ \ \ On va étudier le problème de percolation en dimension $2$ grâce à la modélisation suivante : on se donne une grille de longueur $l$, de hauteur $h$, et chaque case de la grille a une probabilité $p$ d'être ouverte, indépendamment des autres cases. On se demande alors si il y a percolation, c'est à dire si il est possible de relier le haut et le bas de la grille, en passant uniquement par des cases ouvertes. Dans un premier temps, on mettra en évidence l'existence d'une probabilité critique, puis on observera ensuite différentes propriétés du modèle. \\
-Pour faire une simulation, on tire une grille au hasard suivant les paramètres $l,h$ et $p$, puis on fait un parcours en profondeur de la grille pour déterminer les chemins explorés depuis la hauteur initiale, à la manière d'un fluide qui se propage. Le code utilisé est disponible \href{https://github.com/Hazdard/Percolation}{ici}.
+\ \ \ \ \ On va étudier le problème de percolation en dimension $2$ grâce à la modélisation suivante : on se donne une grille de longueur $l$, de hauteur $h$, et chaque case de la grille a une probabilité $p$ d'être ouverte, indépendamment des autres cases, dans ce cas sa valeur sera mise à \verb|True|, sinon à \verb|False|. On se demande alors si il y a percolation, c'est à dire si il est possible de relier le haut et le bas de la grille, en passant uniquement par des cases ouvertes, en se déplaçant sur l'axe vertical et horizontal, mais pas en diagonale. Dans un premier temps, on mettra en évidence l'existence d'une probabilité critique, puis on observera ensuite différentes propriétés du modèle. \\
+Pour faire une simulation, on tire une grille au hasard suivant les paramètres $l,h$ et $p$, puis on fait un parcours en profondeur de la grille à l'aide d'une pile pour déterminer les chemins explorés depuis la hauteur initiale, à la manière d'un fluide qui se propage. Le code utilisé est disponible \href{https://github.com/Hazdard/Percolation/blob/main/percolation.ipynb}{ici}.
 
 \subsection{Probabilité critique et diagramme de phase}
 
@@ -64,7 +65,7 @@ On peut ensuite calculer expérimentalement le diagramme de phase de notre modè
     \centering
     \includegraphics[width=0.6 \textwidth]{./Pictures/percolation_probability.png}
     \caption{Diagramme de phase expérimental pour une grille $100\times 100$}
-    \label{fig:evol}
+    \label{fig:phase}
 \end{figure}
 
 On peut le comparer au diagramme de phase théorique de la percolation ``classique'' précédemment évoquée, et on constate que dans le modèle par sites, la percolation presque sûre est atteinte bien plus rapidement : 
@@ -73,13 +74,13 @@ On peut le comparer au diagramme de phase théorique de la percolation ``classiq
     \centering
     \includegraphics[width=0.4 \textwidth]{./Pictures/ph_th.png}
     \caption{Diagramme de phase théorique dans le cas de percolation standard \cite{grimmett}}
-    \label{fig:evol}
+    \label{fig:phase_th}
 \end{figure}
 
 \subsection{Plus grande composante connexe}
 \ \ \ \ \ Dans la partie théorique suivante, nous aurons besoin d'un résultat d'unicité de la plus grande composante connexe lorsqu'il y a percolation, c'est à dire unicité de la composante connexe infinie car en théorie la grille est infinie. Au vu de la difficulté de la preuve rigoureuse de ce lemme, on se propose plutôt de le mettre en évidence expérimentalement : les graphes suivants ont leurs composantes connexes coloriés, on observe bien qu'il y a unicité de la composante qui atteint le bas de la grille. 
 
-\begin{figure}[htp]
+\begin{figure}[htbp]
 
 \centering
 \includegraphics[width=.3333\textwidth]{./Pictures/cc100.png}\hfill
@@ -87,9 +88,11 @@ On peut le comparer au diagramme de phase théorique de la percolation ``classiq
 \includegraphics[width=.3333\textwidth]{./Pictures/cc1000.png}
 
 \caption{Composantes connexes coloriées sur des grilles carrées de taille $100$, $500$ et $1000$ à $p=0.6$}
-\label{fig:figure3}
+\label{fig:cc}
 
 \end{figure}
+
+On complète ces observations par le graphe de la profondeur maximale atteinte, ainsi que celui de la taille maximale/moyenne des composantes connexes. Le premier corrobore les observations sur la probabilité critique $p_c \simeq 0.6$ à partir de laquelle la profondeur maximale atteinte est celle de la grille. Dans le second graphe, on observe en particulier qu'au voisinage de $p_c$, la taille maximale est nettement supérieure à celle moyenne, ce qui met encore en évidence que la composante maximale qui percole est exceptionnelle dans la grille. Puis pour $p$ proche de $1$, les deux valeurs convergent vers la taille du graphe, car la connectivité est alors suffisamment grande pour que presque toutes les cases soient reliées, conduisant ainsi à une unique composante connexe qui recouvre la quasi-totalité de la grille.
 
 
 \begin{figure}[htp]
@@ -98,12 +101,27 @@ On peut le comparer au diagramme de phase théorique de la percolation ``classiq
 \includegraphics[width=.5\textwidth]{./Pictures/profondeur.png}\hfill
 \includegraphics[width=.5\textwidth]{./Pictures/taille.png}
 
-\caption{Composantes connexes coloriées sur des grilles carrées de taille $100$, $500$ et $1000$ à $p=0.6$}
-\label{fig:figure3}
+\caption{Profondeur, taille moyenne et maximale des composantes connexes d'une grille $100\times 100$}
+\label{fig:depth_size}
 
 \end{figure}
 
+~\\
+~\\
+
+\subsection{Percolation dépendante}
+
+Pour conclure cette partie, on se propose d'étudier empiriquement un second modèle de percolation, où les cases de la grille ne sont plus indépendantes entre elles. La grille sera cette fois générée de la manière suivante : on tire la première ligne ou chaque case a une probabilité $p$ d'être ouverte, indépendamment des autres cases. Puis, pour les autres cases, il y a une probabilité $p'$ de conserver l'état de la cellule du dessus, et $1-p'$ d'être dans l'état opposé. Le but de cette modélisation est d'introduire de la dépendance entre les variables, et d'observer ainsi l'évolution des propriétés intrinsèques par rapport à la modélisation précédente. On observe ici un phénomène de ``fissures'' comme le montre la simulation suivante :
+
+\begin{figure}[htp]
+    \centering
+    \includegraphics[width=1 \textwidth]{./Pictures/fissure.png}
+    \caption{Percolation dépendante sur une grille $1000\times 1000$, avec $p=0.65$ et $p'=0.9$}
+    \label{fig:fissure}
+\end{figure}
+
 \newpage
+
 \printbibliography[heading=bibintoc, title={Références}]
 
 \end{document}
