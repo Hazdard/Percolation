@@ -1,0 +1,21 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\numberline {1}Présentation du modèle}{2}{section.1}%
+\contentsline {section}{\numberline {2}Modélisation informatique}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Probabilité critique et diagramme de phase}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Plus grande composante connexe}{3}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Percolation dépendante}{4}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Étude théorique}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Premières propositions}{6}{subsection.3.1}%
+\contentsline {paragraph}{Proposition 1 :}{6}{section*.10}%
+\contentsline {paragraph}{Proposition 2 :}{6}{section*.11}%
+\contentsline {subsection}{\numberline {3.2}Prérequis au théorème de Kesten}{6}{subsection.3.2}%
+\contentsline {paragraph}{Lemme 1 :}{6}{section*.12}%
+\contentsline {paragraph}{Lemme 2 :}{6}{section*.13}%
+\contentsline {paragraph}{Lemme (Inégalité de FKG) :}{7}{section*.14}%
+\contentsline {paragraph}{Graphe dual :}{7}{section*.15}%
+\contentsline {paragraph}{Lemme 3 : }{7}{section*.16}%
+\contentsline {subsection}{\numberline {3.3}Théorème de Kesten}{7}{subsection.3.3}%
+\contentsline {paragraph}{1ère étape :}{7}{section*.17}%
+\contentsline {paragraph}{2ème étape :}{8}{section*.18}%
+\contentsline {subsection}{\numberline {3.4}Conclusion}{8}{subsection.3.4}%
+\contentsline {section}{Références}{9}{section*.20}%
