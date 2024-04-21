@@ -8,3 +8,4 @@
 *.gz
 .ipynb_checkpoints
 *.toc
+*-blx.bib
